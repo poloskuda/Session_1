@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище bbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "bb.dbo.materials_short_s_import" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="materials_short_s_import">
+          <Key>
+            <PropertyRef Name="Наименование_материала" />
+            <PropertyRef Name="Тип_материала" />
+            <PropertyRef Name="Количество_в_упаковке" />
+            <PropertyRef Name="Единица_измерения" />
+            <PropertyRef Name="Количество_на_складе" />
+            <PropertyRef Name="Минимальный_возможный_остаток" />
+            <PropertyRef Name="Стоимость" />
+          </Key>
+          <Property Name="Наименование_материала" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Тип_материала" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Количество_в_упаковке" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Единица_измерения" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Количество_на_складе" Type="int" Nullable="false" />
+          <Property Name="Минимальный_возможный_остаток" Type="int" Nullable="false" />
+          <Property Name="Стоимость" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "bb.dbo.Product_materials_import" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Product_materials_import">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Produkcia" />
+            <PropertyRef Name="Naimenovanie" />
+            <PropertyRef Name="Kolichestvo" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Produkcia" Type="text" Nullable="false" />
+          <Property Name="Naimenovanie" Type="text" Nullable="false" />
+          <Property Name="Kolichestvo" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "bb.dbo.products_s_import" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="products_s_import">
+          <Key>
+            <PropertyRef Name="Наименование_продукции" />
+            <PropertyRef Name="Артикул" />
+            <PropertyRef Name="Минимальная_стоимость_для_агента" />
+            <PropertyRef Name="Изображение" />
+            <PropertyRef Name="Тип_продукции" />
+            <PropertyRef Name="Количество_человек_для_производства" />
+            <PropertyRef Name="Номер_цеха_для_производства" />
+          </Key>
+          <Property Name="Наименование_продукции" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Артикул" Type="int" Nullable="false" />
+          <Property Name="Минимальная_стоимость_для_агента" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Изображение" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Тип_продукции" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Количество_человек_для_производства" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Номер_цеха_для_производства" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityContainer Name="Хранилище bbModelContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="materials_short_s_import" EntityType="Self.materials_short_s_import" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [materials_short_s_import].[Наименование_материала] AS [Наименование_материала], 
+    [materials_short_s_import].[Тип_материала] AS [Тип_материала], 
+    [materials_short_s_import].[Количество_в_упаковке] AS [Количество_в_упаковке], 
+    [materials_short_s_import].[Единица_измерения] AS [Единица_измерения], 
+    [materials_short_s_import].[Количество_на_складе] AS [Количество_на_складе], 
+    [materials_short_s_import].[Минимальный_возможный_остаток] AS [Минимальный_возможный_остаток], 
+    [materials_short_s_import].[Стоимость] AS [Стоимость]
+    FROM [dbo].[materials_short_s_import] AS [materials_short_s_import]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Product_materials_import" EntityType="Self.Product_materials_import" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Product_materials_import].[id] AS [id], 
+    [Product_materials_import].[Produkcia] AS [Produkcia], 
+    [Product_materials_import].[Naimenovanie] AS [Naimenovanie], 
+    [Product_materials_import].[Kolichestvo] AS [Kolichestvo]
+    FROM [dbo].[Product_materials_import] AS [Product_materials_import]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="products_s_import" EntityType="Self.products_s_import" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [products_s_import].[Наименование_продукции] AS [Наименование_продукции], 
+    [products_s_import].[Артикул] AS [Артикул], 
+    [products_s_import].[Минимальная_стоимость_для_агента] AS [Минимальная_стоимость_для_агента], 
+    [products_s_import].[Изображение] AS [Изображение], 
+    [products_s_import].[Тип_продукции] AS [Тип_продукции], 
+    [products_s_import].[Количество_человек_для_производства] AS [Количество_человек_для_производства], 
+    [products_s_import].[Номер_цеха_для_производства] AS [Номер_цеха_для_производства]
+    FROM [dbo].[products_s_import] AS [products_s_import]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="materials_short_s_import">
+          <Key>
+            <PropertyRef Name="Наименование_материала" />
+            <PropertyRef Name="Тип_материала" />
+            <PropertyRef Name="Количество_в_упаковке" />
+            <PropertyRef Name="Единица_измерения" />
+            <PropertyRef Name="Количество_на_складе" />
+            <PropertyRef Name="Минимальный_возможный_остаток" />
+            <PropertyRef Name="Стоимость" />
+          </Key>
+          <Property Name="Наименование_материала" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Тип_материала" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Количество_в_упаковке" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Единица_измерения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Количество_на_складе" Type="Int32" Nullable="false" />
+          <Property Name="Минимальный_возможный_остаток" Type="Int32" Nullable="false" />
+          <Property Name="Стоимость" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product_materials_import">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Produkcia" />
+            <PropertyRef Name="Naimenovanie" />
+            <PropertyRef Name="Kolichestvo" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Produkcia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Naimenovanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kolichestvo" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="products_s_import">
+          <Key>
+            <PropertyRef Name="Наименование_продукции" />
+            <PropertyRef Name="Артикул" />
+            <PropertyRef Name="Минимальная_стоимость_для_агента" />
+            <PropertyRef Name="Изображение" />
+            <PropertyRef Name="Тип_продукции" />
+            <PropertyRef Name="Количество_человек_для_производства" />
+            <PropertyRef Name="Номер_цеха_для_производства" />
+          </Key>
+          <Property Name="Наименование_продукции" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Артикул" Type="Int32" Nullable="false" />
+          <Property Name="Минимальная_стоимость_для_агента" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Изображение" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Тип_продукции" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Количество_человек_для_производства" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Номер_цеха_для_производства" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="bbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="materials_short_s_import" EntityType="Self.materials_short_s_import" />
+          <EntitySet Name="Product_materials_import" EntityType="Self.Product_materials_import" />
+          <EntitySet Name="products_s_import" EntityType="Self.products_s_import" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище bbModelContainer" CdmEntityContainer="bbEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="bbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="materials_short_s_import">
+            <EntityTypeMapping TypeName="bbModel.materials_short_s_import">
+              <MappingFragment StoreEntitySet="materials_short_s_import">
+                <ScalarProperty Name="Наименование_материала" ColumnName="Наименование_материала" />
+                <ScalarProperty Name="Тип_материала" ColumnName="Тип_материала" />
+                <ScalarProperty Name="Количество_в_упаковке" ColumnName="Количество_в_упаковке" />
+                <ScalarProperty Name="Единица_измерения" ColumnName="Единица_измерения" />
+                <ScalarProperty Name="Количество_на_складе" ColumnName="Количество_на_складе" />
+                <ScalarProperty Name="Минимальный_возможный_остаток" ColumnName="Минимальный_возможный_остаток" />
+                <ScalarProperty Name="Стоимость" ColumnName="Стоимость" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_materials_import">
+            <EntityTypeMapping TypeName="bbModel.Product_materials_import">
+              <MappingFragment StoreEntitySet="Product_materials_import">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Produkcia" ColumnName="Produkcia" />
+                <ScalarProperty Name="Naimenovanie" ColumnName="Naimenovanie" />
+                <ScalarProperty Name="Kolichestvo" ColumnName="Kolichestvo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products_s_import">
+            <EntityTypeMapping TypeName="bbModel.products_s_import">
+              <MappingFragment StoreEntitySet="products_s_import">
+                <ScalarProperty Name="Наименование_продукции" ColumnName="Наименование_продукции" />
+                <ScalarProperty Name="Артикул" ColumnName="Артикул" />
+                <ScalarProperty Name="Минимальная_стоимость_для_агента" ColumnName="Минимальная_стоимость_для_агента" />
+                <ScalarProperty Name="Изображение" ColumnName="Изображение" />
+                <ScalarProperty Name="Тип_продукции" ColumnName="Тип_продукции" />
+                <ScalarProperty Name="Количество_человек_для_производства" ColumnName="Количество_человек_для_производства" />
+                <ScalarProperty Name="Номер_цеха_для_производства" ColumnName="Номер_цеха_для_производства" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
